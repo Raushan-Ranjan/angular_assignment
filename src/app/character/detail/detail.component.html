@@ -1,0 +1,36 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+
+<div class="main" *ngIf="!isLoading">
+  <div *ngIf="detail.length>0">
+<mat-card class="example-card" *ngFor="let item of detail">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{item.name}}</mat-card-title>
+      <mat-card-subtitle><small>NickName :</small> {{item.nickname}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{item.img}}" alt="Photo of {{item.name}}">
+    <mat-card-content>
+    <small>Date Of Birth : </small> {{item.birthday}}<br>
+    <small>Occupation : </small> {{item.occupation}}<br>
+    <small>Status : </small> {{item.status}}<br>
+    <small>Portrayed : </small> {{item.portrayed}}<br>
+    <small> Session Appearance : </small> {{item.appearance}}<br>
+    <small>Quotes</small> : 
+    <ul>
+      <li  *ngFor="let quote of quotes">
+      {{quote.quote}}
+      </li>
+    </ul>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-button color="primary" routerLink="/">Back To List</a>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+  <div *ngIf="detail.length==0">
+    <h1>No Character Detail With Given Info</h1>
+    <a mat-button color="primary" routerLink="/">Back To List</a>
+  </div>
+</div>
+  

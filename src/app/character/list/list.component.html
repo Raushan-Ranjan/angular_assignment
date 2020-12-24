@@ -1,0 +1,36 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+
+<div class="main" *ngIf="!isLoading">
+
+
+  <mat-accordion  multi=true> 
+  <h1>Breaking Bad Characters</h1>
+     
+    <mat-expansion-panel *ngFor="let character of characters">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{character.name}}
+        </mat-panel-title>
+        <mat-panel-description>
+          Occuption - {{character.occupation}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+   Date of Birth - {{character.birthday}}<br>
+   status - {{character.status}}
+
+   <mat-action-row>
+    <a mat-button color="warn" routerLink="detail/{{character.char_id}}/{{character.name}}">Details</a>
+  </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion> 
+
+
+<mat-paginator [length]="totalCharacter"
+[pageSize]="postsPerPage"
+[pageSizeOptions]="pageSizeOptions"
+(page)="onChangePage($event)">
+</mat-paginator>
+</div>
+
+  
